@@ -1,4 +1,3 @@
-// categories/categories.service.ts
 import { Injectable, OnModuleInit, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -13,7 +12,6 @@ export class CategoriesService implements OnModuleInit {
   ) {}
 
   async onModuleInit() {
-    // Cargar categorías predefinidas
     const defaultCategories = ['Terror', 'Suspenso', 'Drama', 'Comedia'];
     for (const name of defaultCategories) {
       const existingCategory = await this.categoriesRepository.findOne({ where: { name } });

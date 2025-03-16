@@ -1,4 +1,3 @@
-// movies/movies.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository, Like, MoreThanOrEqual, LessThanOrEqual } from 'typeorm';
@@ -17,7 +16,6 @@ export class MoviesService {
   ) {}
 
   async create(createMovieDto: CreateMovieDto): Promise<Movie> {
-    // Verificar que la categoría existe
     await this.categoriesService.findOne(createMovieDto.category_id);
     
     const movie = this.moviesRepository.create(createMovieDto);
@@ -27,12 +25,10 @@ export class MoviesService {
   async findAll(filterDto: FilterMoviesDto): Promise<{ data: Movie[]; total: number; page: number; limit: number }> {
     const { title, categoryId, page = 1, limit = 10, sortOrder = 'DESC' } = filterDto;
   
-    // Construir la consulta con filtros
     const queryBuilder = this.moviesRepository
       .createQueryBuilder('movie')
       .leftJoinAndSelect('movie.category', 'category');
   
-    // Aplicar filtros si existen
     if (title) {
       queryBuilder.andWhere('movie.title ILIKE :title', { title: `%${title}%` });
     }
@@ -41,14 +37,11 @@ export class MoviesService {
       queryBuilder.andWhere('movie.category_id = :categoryId', { categoryId });
     }
     
-    // Aplicar ordenamiento por fecha de estreno
     queryBuilder.orderBy('movie.releaseDate', sortOrder);
     
-    // Aplicar paginación
     const offset = (page - 1) * limit;
     queryBuilder.skip(offset).take(limit);
     
-    // Ejecutar la consulta
     const [data, total] = await queryBuilder.getManyAndCount();
     
     return {
@@ -73,7 +66,6 @@ export class MoviesService {
   }
 
   async getNewReleases(): Promise<Movie[]> {
-    // Una película es novedad si su fecha de estreno es inferior a tres semanas
     const threeWeeksAgo = subWeeks(new Date(), 3);
     
     return this.moviesRepository.find({

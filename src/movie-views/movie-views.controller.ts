@@ -1,4 +1,3 @@
-// movie-views/movie-views.controller.ts
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { MovieViewsService } from './movie-views.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';

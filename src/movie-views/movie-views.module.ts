@@ -1,4 +1,3 @@
-// movie-views/movie-views.module.ts
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MovieViewsService } from './movie-views.service';

@@ -1,0 +1,279 @@
+{
+   "info": {
+     "_postman_id": "8e3f47a6-1234-5678-9abc-def012345678",
+     "name": "Movies API",
+     "description": "Colección para probar los endpoints de la API de películas",
+     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+   },
+   "item": [
+     {
+       "name": "Categorías",
+       "item": [
+         {
+           "name": "Obtener todas las categorías",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/categories",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["categories"]
+             }
+           }
+         },
+         {
+           "name": "Crear categoría",
+           "request": {
+             "method": "POST",
+             "url": {
+               "raw": "http://localhost:3000/categories",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["categories"]
+             },
+             "body": {
+               "mode": "raw",
+               "raw": "{\n    \"name\": \"Ciencia Ficción\"\n}",
+               "options": {
+                 "raw": {
+                   "language": "json"
+                 }
+               }
+             }
+           }
+         }
+       ]
+     },
+     {
+       "name": "Usuarios",
+       "item": [
+         {
+           "name": "Crear usuario",
+           "request": {
+             "method": "POST",
+             "url": {
+               "raw": "http://localhost:3000/users",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["users"]
+             },
+             "body": {
+               "mode": "raw",
+               "raw": "{\n    \"username\": \"usuario1\",\n    \"email\": \"usuario1@ejemplo.com\",\n    \"password\": \"password123\"\n}",
+               "options": {
+                 "raw": {
+                   "language": "json"
+                 }
+               }
+             }
+           }
+         },
+         {
+           "name": "Obtener todos los usuarios",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/users",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["users"]
+             }
+           }
+         },
+         {
+           "name": "Obtener películas vistas por usuario",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/users/1/movies",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["users", "1", "movies"]
+             }
+           }
+         }
+       ]
+     },
+     {
+       "name": "Películas",
+       "item": [
+         {
+           "name": "Crear película",
+           "request": {
+             "method": "POST",
+             "url": {
+               "raw": "http://localhost:3000/movies",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movies"]
+             },
+             "body": {
+               "mode": "raw",
+               "raw": "{\n    \"title\": \"El Padrino\",\n    \"description\": \"La historia de la familia Corleone\",\n    \"releaseDate\": \"1972-03-24\",\n    \"duration\": 175,\n    \"category_id\": 3\n}",
+               "options": {
+                 "raw": {
+                   "language": "json"
+                 }
+               }
+             }
+           }
+         },
+         {
+           "name": "Crear película reciente (novedad)",
+           "request": {
+             "method": "POST",
+             "url": {
+               "raw": "http://localhost:3000/movies",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movies"]
+             },
+             "body": {
+               "mode": "raw",
+               "raw": "{\n    \"title\": \"Película nueva\",\n    \"description\": \"Una película de estreno\",\n    \"releaseDate\": \"{{$isoTimestamp}}\",\n    \"duration\": 120,\n    \"category_id\": 1\n}",
+               "options": {
+                 "raw": {
+                   "language": "json"
+                 }
+               }
+             }
+           }
+         },
+         {
+           "name": "Obtener todas las películas",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/movies",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movies"]
+             }
+           }
+         },
+         {
+           "name": "Filtrar películas por título",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/movies?title=Padrino",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movies"],
+               "query": [
+                 {
+                   "key": "title",
+                   "value": "Padrino"
+                 }
+               ]
+             }
+           }
+         },
+         {
+           "name": "Filtrar películas por categoría",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/movies?categoryId=3",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movies"],
+               "query": [
+                 {
+                   "key": "categoryId",
+                   "value": "3"
+                 }
+               ]
+             }
+           }
+         },
+         {
+           "name": "Películas con paginación",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/movies?page=1&limit=5",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movies"],
+               "query": [
+                 {
+                   "key": "page",
+                   "value": "1"
+                 },
+                 {
+                   "key": "limit",
+                   "value": "5"
+                 }
+               ]
+             }
+           }
+         },
+         {
+           "name": "Obtener novedades",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/movies/new-releases",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movies", "new-releases"]
+             }
+           }
+         }
+       ]
+     },
+     {
+       "name": "Vistas de Películas",
+       "item": [
+         {
+           "name": "Marcar película como vista",
+           "request": {
+             "method": "POST",
+             "url": {
+               "raw": "http://localhost:3000/movie-views",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movie-views"]
+             },
+             "body": {
+               "mode": "raw",
+               "raw": "{\n    \"userId\": 1,\n    \"movieId\": 1\n}",
+               "options": {
+                 "raw": {
+                   "language": "json"
+                 }
+               }
+             }
+           }
+         },
+         {
+           "name": "Obtener usuarios con películas vistas",
+           "request": {
+             "method": "GET",
+             "url": {
+               "raw": "http://localhost:3000/movie-views/users-with-movies",
+               "protocol": "http",
+               "host": ["localhost"],
+               "port": "3000",
+               "path": ["movie-views", "users-with-movies"]
+             }
+           }
+         }
+       ]
+     }
+   ]
+ }

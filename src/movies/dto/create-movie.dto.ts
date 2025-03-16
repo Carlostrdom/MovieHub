@@ -1,4 +1,3 @@
-// movies/dto/create-movie.dto.ts
 import { IsNotEmpty, IsString, IsNumber, IsDate, IsOptional } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';

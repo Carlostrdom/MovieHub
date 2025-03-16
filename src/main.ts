@@ -5,13 +5,11 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
- // Configuración global de pipes para validación
- app.useGlobalPipes(new ValidationPipe({
+  app.useGlobalPipes(new ValidationPipe({
   whitelist: true,
   transform: true,
 }));
 
-// Configuración de Swagger
 const config = new DocumentBuilder()
   .setTitle('Movies API')
   .setDescription('API para gestión de películas y usuarios')

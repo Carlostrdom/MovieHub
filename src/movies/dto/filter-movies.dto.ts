@@ -1,4 +1,3 @@
-// movies/dto/filter-movies.dto.ts
 import { IsOptional, IsString, IsNumber, IsEnum } from 'class-validator';
 import { Type } from 'class-transformer';
 import { ApiProperty } from '@nestjs/swagger';

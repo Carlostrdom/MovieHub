@@ -1,4 +1,3 @@
-// users/users.service.ts
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
@@ -14,7 +13,6 @@ export class UsersService {
   ) {}
 
   async create(createUserDto: CreateUserDto): Promise<Omit<User, 'password'>> {
-    // Hashear la contraseña antes de guardarla
     const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
     
     const user = this.usersRepository.create({
@@ -24,7 +22,6 @@ export class UsersService {
     
     const savedUser = await this.usersRepository.save(user);
     
-    // No devolver la contraseña al cliente
     const { password, ...result } = savedUser;
     return result;
   }
@@ -55,10 +52,8 @@ export class UsersService {
       throw new NotFoundException(`User with ID ${id} not found`);
     }
     
-    // Formatear la respuesta para no exponer la contraseña
     const { password, ...userData } = user;
     
-    // Estructurar el resultado para mostrar datos relevantes
     return {
       ...userData,
       viewedMovies: user.movieViews.map(view => ({
