@@ -1,0 +1,380 @@
+{
+	"info": {
+		"_postman_id": "82f6a2cb-2318-48c1-b51c-8dcf415a4642",
+		"name": "Movies API",
+		"description": "Colección para probar los endpoints de la API de películas",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25703138"
+	},
+	"item": [
+		{
+			"name": "Categorías",
+			"item": [
+				{
+					"name": "Obtener todas las categorías",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear categoría",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ciencia Ficción\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"categories"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "Crear usuario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"Torreyes\",\n    \"email\": \"torreyes1@ejemplo.com\",\n    \"password\": \"password123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los usuarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/users",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener películas vistas por usuario",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/users/1/movies",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"users",
+								"1",
+								"movies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Películas",
+			"item": [
+				{
+					"name": "Crear película",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"El Padrino\",\n    \"description\": \"La historia de la familia Corleone\",\n    \"releaseDate\": \"1972-03-24\",\n    \"duration\": 175,\n    \"category_id\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear película reciente (novedad)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Película nueva\",\n    \"description\": \"Una película de estreno\",\n    \"releaseDate\": \"{{$isoTimestamp}}\",\n    \"duration\": 120,\n    \"category_id\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todas las películas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movies",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar películas por título",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movies?title=Padrino",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Padrino"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filtrar películas por categoría",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movies?categoryId=3",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Películas con paginación",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movies?page=1&limit=5",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener novedades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movies/new-releases",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movies",
+								"new-releases"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Vistas de Películas",
+			"item": [
+				{
+					"name": "Marcar película como vista",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userId\": 1,\n    \"movieId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movie-views",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movie-views"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener usuarios con películas vistas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://movie-hub-2c4ab3d44f2d.herokuapp.com/movie-views/users-with-movies",
+							"protocol": "https",
+							"host": [
+								"movie-hub-2c4ab3d44f2d",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								"movie-views",
+								"users-with-movies"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
