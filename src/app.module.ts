@@ -31,6 +31,9 @@ import { MovieView } from './movie-views/entities/movie-view.entity';
         database: configService.get('database.name', 'movies_db'),
         entities: [Category, Movie, User, MovieView],
         synchronize: configService.get('database.synchronize', true),
+        ssl: {
+          rejectUnauthorized: false
+        },
       }),
     }),
     MoviesModule,
